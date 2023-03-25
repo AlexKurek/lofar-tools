@@ -2,32 +2,32 @@
 # Place this script in main MS folder. No other folders than MSs should be there
 
 import os
-rootMSfolder='./'
-listFname = "MSlist.txt"
+root_MS_folder ='./'
+list_fname = "MSlist.txt"
 
-dirList = [ item for item in os.listdir(rootMSfolder) if os.path.isdir(os.path.join(rootMSfolder, item)) ]
-dirListSorted = sorted(dirList)
+dir_list = [ item for item in os.listdir(root_MS_folder ) if os.path.isdir(os.path.join(root_MS_folder , item)) ]
+dir_list_sorted = sorted(dir_list)
 
 try:
-  os.remove(listFname)
+  os.remove(list_fname)
 except OSError:
   pass
-f = open(listFname, "a")
+f = open(list_fname, "a")
 f.write("    \"msin\": [\n")
 
-listLen = len(dirListSorted) - 1
-for item in dirListSorted:
+list_len = len(dir_list_sorted) - 1
+for item in dir_list_sorted:
   f.write("        {\n")
   f.write("            \"class\": \"Directory\",\n")
   f.write("        ")
   f.write("    \"path\": \"./")
   f.write(item)
   f.write("\"\n")
-  if dirListSorted.index(item) == listLen:
+  if dir_list_sorted.index(item) == list_len:
     f.write("        }\n")
   else:
     f.write("        },\n")
 f.write("    ]")
 f.close()
 
-print ("Done. Check " + listFname + " file.")
+print ("Done. Check " + list_fname + " file.")
