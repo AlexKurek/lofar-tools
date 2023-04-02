@@ -12,22 +12,22 @@ try:
   os.remove(list_fname)
 except OSError:
   pass
-f = open(list_fname, "a")
-f.write("    \"msin\": [\n")
+file = open(list_fname, "a")
+file.write("    \"msin\": [\n")
 
 list_len = len(dir_list_sorted) - 1
 for item in dir_list_sorted:
-  f.write("        {\n")
-  f.write("            \"class\": \"Directory\",\n")
-  f.write("        ")
-  f.write("    \"path\": \"./")
-  f.write(item)
-  f.write("\"\n")
+  file.write("        {\n")
+  file.write("            \"class\": \"Directory\",\n")
+  file.write("        ")
+  file.write("    \"path\": \"./")
+  file.write(item)
+  file.write("\"\n")
   if dir_list_sorted.index(item) == list_len:
-    f.write("        }\n")
+    file.write("        }\n")
   else:
-    f.write("        },\n")
-f.write("    ]")
-f.close()
+    file.write("        },\n")
+file.write("    ]")
+file.close()
 
-print ("Done. Check " + list_fname + " file.")
+print(f'Done. Check {list_fname} file.')
